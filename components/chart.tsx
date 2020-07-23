@@ -119,7 +119,7 @@ const Chart = ({
         this["_current"] = d;
       })
       .transition()
-      .duration(750)
+      .duration(650)
       .attrTween("d", arcTweens.enter);
 
     // add events
