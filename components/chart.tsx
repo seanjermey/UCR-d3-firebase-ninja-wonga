@@ -39,7 +39,7 @@ const Chart = ({
   // arc tweens
   const arcTweens = {
     enter(d) {
-      const i = d3.interpolate(d.endAngle, d.startAngle);
+      const i = d3.interpolate(d.endAngle - 0.1, d.startAngle);
 
       return function (t) {
         d.startAngle = i(t);
