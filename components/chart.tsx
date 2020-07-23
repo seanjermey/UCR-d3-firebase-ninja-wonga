@@ -104,11 +104,7 @@ const Chart = ({
       .remove();
 
     // handle current dom paths
-    paths
-      .attr("d", arcPath)
-      .transition()
-      .duration(750)
-      .attrTween("d", arcTweens.update);
+    paths.transition().duration(750).attrTween("d", arcTweens.update);
 
     // handle enter dom paths
     paths
@@ -117,6 +113,7 @@ const Chart = ({
       .attr("class", "arc")
       .attr("stroke", "#fff")
       .attr("stroke-width", 3)
+      .attr("d", arcPath)
       .attr("fill", (d) => color(d.data.name))
       .each(function (d) {
         this["_current"] = d;
