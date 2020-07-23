@@ -144,7 +144,11 @@ const Chart = ({
           .duration(300)
           .attr("fill", color(d.data.name));
       })
-      .on("click", (d: d3.PieArcDatum<Value>) => onSliceClick(d.data));
+      .on("click", (d: d3.PieArcDatum<Value>) => {
+        tooltip.hide();
+
+        onSliceClick(d.data);
+      });
   };
 
   useEffect(() => {
