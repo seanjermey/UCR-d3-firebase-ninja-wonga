@@ -72,6 +72,7 @@ const Chart = ({
     const graph = d3.select(graphRef.current);
     const paths = graph.selectAll("path").data(pie(data));
 
+    // @ts-ignore
     const tooltip = d3Tip()
       .attr("class", "tip card")
       .html((d) => {
