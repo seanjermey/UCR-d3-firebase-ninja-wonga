@@ -15,7 +15,7 @@ const LandingPage = () => {
 
         switch (change.type) {
           case "added":
-            return setData((data) => [doc, ...data]);
+            return setData((data) => [...data, doc]);
 
           case "modified":
             return setData((data) => [

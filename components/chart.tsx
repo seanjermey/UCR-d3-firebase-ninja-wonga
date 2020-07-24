@@ -98,13 +98,16 @@ const Chart = ({
     // handle exit dom paths
     paths
       .exit()
-      .transition()
+      .transition("changeSliceAngle")
       .duration(750)
       .attrTween("d", arcTweens.exit)
       .remove();
 
     // handle current dom paths
-    paths.transition().duration(750).attrTween("d", arcTweens.update);
+    paths
+      .transition("changeSliceAngle")
+      .duration(750)
+      .attrTween("d", arcTweens.update);
 
     // handle enter dom paths
     paths
@@ -118,7 +121,7 @@ const Chart = ({
       .each(function (d) {
         this["_current"] = d;
       })
-      .transition()
+      .transition("changeSliceAngle")
       .duration(750)
       .attrTween("d", arcTweens.enter);
 
@@ -150,10 +153,6 @@ const Chart = ({
 
   useEffect(() => {
     update(data);
-
-    const interval = setInterval(() => update(data), 750);
-
-    return () => clearInterval(interval);
   }, [data]);
 
   return (
