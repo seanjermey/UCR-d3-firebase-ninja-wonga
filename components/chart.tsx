@@ -69,8 +69,15 @@ const Chart = ({
 
   // update dom
   const update = (data) => {
+    const pieData = pie(data);
+
+    console.log({
+      data,
+      pie: pieData,
+    });
+
     const graph = d3.select(graphRef.current);
-    const paths = graph.selectAll("path").data(pie(data));
+    const paths = graph.selectAll("path").data(pieData);
 
     // @ts-ignore
     const tooltip = d3Tip()
