@@ -69,15 +69,8 @@ const Chart = ({
 
   // update dom
   const update = (data) => {
-    const pieData = pie(data);
-
-    console.log({
-      data,
-      pie: pieData,
-    });
-
     const graph = d3.select(graphRef.current);
-    const paths = graph.selectAll("path").data(pieData);
+    const paths = graph.selectAll("path").data(pie(data));
 
     // @ts-ignore
     const tooltip = d3Tip()
@@ -126,7 +119,7 @@ const Chart = ({
         this["_current"] = d;
       })
       .transition()
-      .duration(650)
+      .duration(750)
       .attrTween("d", arcTweens.enter);
 
     // add events
@@ -157,6 +150,10 @@ const Chart = ({
 
   useEffect(() => {
     update(data);
+
+    const interval = setInterval(() => update(data), 750);
+
+    return () => clearInterval(interval);
   }, [data]);
 
   return (
